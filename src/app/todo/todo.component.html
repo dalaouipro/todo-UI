@@ -15,7 +15,7 @@
 				<th>id</th>
 				<th>title</th>
 				<th>Complete ?</th>
-				<th>Actions</th>
+				<th rowspan="2" class="text-center">Actions</th>
 			  </tr>
 			</thead>
 			<tbody>
@@ -23,10 +23,8 @@
 				<td>{{todo.id}}</td>
 				<td>{{todo.title}}</td>
 				<td>{{todo.complete ? 'Yes' : 'No' }}</td>
-				<td>{{todo.complete}}</td>
-				<td><button (click)="switchComplete(todo)" class="btn btn-danger">(Un)Complete</button>
-				<td><button (click)="deleteTodo(todo.id)" class="btn btn-danger">Delete</button>
-				</td>
+				<td><button (click)="switchComplete(todo)" class="btn btn-danger">(Un)Complete</button></td>
+				<td><button (click)="deleteTodo(todo.id)" class="btn btn-danger">Delete</button></td>
 			  </tr>
 			</tbody>
 		  </table>
