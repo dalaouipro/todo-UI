@@ -19,6 +19,7 @@ export class TodoComponent implements OnInit {
 
   reloadData() {
     this.todos = this.service.getTodos();
+    console.log(this.todos);
   }
   
 
@@ -33,7 +34,7 @@ export class TodoComponent implements OnInit {
   }
   
   switchComplete(todo: Todo) {
-    if(todo.isComplete==false){
+    if(!todo.complete){
       this.service.markTodoCompleted(todo.id)
         .subscribe(
           data => {

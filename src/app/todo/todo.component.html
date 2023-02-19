@@ -22,10 +22,8 @@
 			  <tr *ngFor="let todo of todos | async">
 				<td>{{todo.id}}</td>
 				<td>{{todo.title}}</td>
-				<div *ngIf="todo.isComplete; then thenBlock else elseBlock"></div>
-					<ng-template #thenBlock>true</ng-template>
-					<ng-template #elseBlock>false</ng-template>
-				<td>{{todo.isComplete}}</td>
+				<td>{{todo.complete ? 'Yes' : 'No' }}</td>
+				<td>{{todo.complete}}</td>
 				<td><button (click)="switchComplete(todo)" class="btn btn-danger">(Un)Complete</button>
 				<td><button (click)="deleteTodo(todo.id)" class="btn btn-danger">Delete</button>
 				</td>
