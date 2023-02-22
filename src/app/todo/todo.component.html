@@ -4,7 +4,8 @@
         <base href="/">
         ...
     </head>
-    <body><div class="panel panel-primary">
+    <body>
+		<div class="panel panel-primary">
 		<div class="panel-heading">
 		  <h2>Todo list</h2>
 		</div>
@@ -23,7 +24,8 @@
 				<td>{{todo.id}}</td>
 				<td>{{todo.title}}</td>
 				<td>{{todo.complete ? 'Yes' : 'No' }}</td>
-				<td><button (click)="switchComplete(todo)" class="btn btn-danger">(Un)Complete</button></td>
+				<td><button (click)="switchComplete(todo)" class="btn btn-success">(Un)Complete</button></td>
+				<td><button (click)="findTodo(todo.id)" class="btn btn-success">find</button></td>
 				<td><button (click)="deleteTodo(todo.id)" class="btn btn-danger">Delete</button></td>
 			  </tr>
 			</tbody>

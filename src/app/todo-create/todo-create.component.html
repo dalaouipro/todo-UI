@@ -1,0 +1,10 @@
+<h3>Create Todo</h3>
+<div style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Title</label>
+      <input type="text" class="form-control" id="title" required [(ngModel)]="title" name="title">
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>

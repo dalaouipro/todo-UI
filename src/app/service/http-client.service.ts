@@ -1,14 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
-
-export class Todo{
-  constructor(
-    public id:number,
-    public title:string,
-    public complete:boolean,
-  ) {}
-}
+import { Todo } from 'app/models/Todo';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +9,11 @@ export class Todo{
 export class HttpClientService {
   constructor(private http:HttpClient) { }
 
-  getTodos(): Observable<any> { return this.http.get('http://localhost:8080/listTodos'); }
+  getTodos(): Observable<any> { return this.http.post('http://localhost:8080/listTodos', null); }
 
-  createTodo(body: String): Observable<Object> { return this.http.post<Todo>('http://localhost:8080/createTodo', body);}
+  createTodo(title:string): Observable<Object> { return this.http.post<Todo>('http://localhost:8080/createTodo', title);}
+  findTodo(id:number): Observable<Object> { return this.http.post<Todo>('http://localhost:8080/findTodo', id);}
+  updateTodo(id:number, title:string): Observable<Object> { return this.http.post<Todo>('http://localhost:8080/findTodo', {id, title});}
   deleteTodo(id: number): Observable<Object> { return this.http.post<Todo>('http://localhost:8080/deleteTodo', id);}
   markTodoCompleted(id: number): Observable<Object> { return this.http.post<Todo>('http://localhost:8080/markTodoCompleted', id);}
   markTodoUncompleted(id: number): Observable<Object> { return this.http.post<Todo>('http://localhost:8080/markTodoUncompleted', id);}

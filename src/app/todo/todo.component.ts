@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Todo } from 'app/models/Todo';
 import { Observable } from 'rxjs/internal/Observable';
-import { HttpClientService, Todo } from '../service/http-client.service';
+import { HttpClientService} from '../service/http-client.service';
+
 
 @Component({
   selector: 'app-todo',
@@ -31,6 +33,10 @@ export class TodoComponent implements OnInit {
       },
       error : (e) => console.log(e),
     });
+  }
+
+  findTodo(id:number) {
+    this.router.navigate(['/update'], {queryParams : {id : id}});
   }
   
   switchComplete(todo: Todo) {
