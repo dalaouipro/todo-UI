@@ -24,35 +24,34 @@ export class TodoComponent implements OnInit {
   
 
   deleteTodo(id: number) {
-    this.service.deleteTodo(id)
-      .subscribe(
-        data => {
-          console.log(data);
-          this.reloadData();
-        },
-        error => console.log(error));
+    this.service.deleteTodo(id).subscribe({
+      next : (data) => {
+        console.log(data);
+        this.reloadData();
+      },
+      error : (e) => console.log(e),
+    });
   }
   
   switchComplete(todo: Todo) {
     if(!todo.complete){
-      this.service.markTodoCompleted(todo.id)
-        .subscribe(
-          data => {
+      this.service.markTodoCompleted(todo.id).subscribe({
+          next : (data) => {
             console.log(data);
             this.reloadData();
           },
-          error => console.log(error));
-    }
+          error : (e) => console.log(e),
+        });
+      }
     else{
       this.service.markTodoUncompleted(todo.id)
-        .subscribe(
-          data => {
+        .subscribe({
+          next : (data) => {
             console.log(data);
             this.reloadData();
           },
-          error => console.log(error));
+          error : (e) => console.log(e),
+      });
     }
   }
-
-
 }
