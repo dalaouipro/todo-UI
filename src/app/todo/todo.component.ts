@@ -36,7 +36,7 @@ export class TodoComponent implements OnInit {
   }
 
   findTodo(id:number) {
-    this.router.navigate(['/update'], {queryParams : {id : id}});
+    this.router.navigate(['/update'], {state : {id : id}});
   }
   
   switchComplete(todo: Todo) {

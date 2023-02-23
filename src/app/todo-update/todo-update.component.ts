@@ -11,7 +11,9 @@ export class TodoUpdateComponent {
   id!:number
   title!:string;
 
-  constructor(private service:HttpClientService, private router:Router, private route:ActivatedRoute) {}
+  constructor(private service:HttpClientService, private router:Router, private route:ActivatedRoute) {
+    // this.id = this.router.getCurrentNavigation()?.extras.state?.['id'];
+  }
   ngOnInit(){
     // this.route.queryParams.subscribe({
     //   next : params => {
@@ -20,6 +22,9 @@ export class TodoUpdateComponent {
     //     this.title=params['title'];
     //   }
     // })
+    this.id=history.state['id']
+    console.log(this.id);
+    console.log(this.title);
   }
   
 
