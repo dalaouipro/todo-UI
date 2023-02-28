@@ -21,7 +21,6 @@ export class TodoComponent implements OnInit {
 
   reloadData() {
     this.todos = this.service.getTodos();
-    console.log(this.todos);
   }
   
 
@@ -35,8 +34,8 @@ export class TodoComponent implements OnInit {
     });
   }
 
-  findTodo(id:number) {
-    this.router.navigate(['/update'], {state : {id : id}});
+  findTodo(id:number, title:string) {
+    this.router.navigate(['/update'], { queryParams: { id: id, title:title } });
   }
   
   switchComplete(todo: Todo) {

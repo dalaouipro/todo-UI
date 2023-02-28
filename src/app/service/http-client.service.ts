@@ -9,12 +9,14 @@ import { Todo } from 'app/models/Todo';
 export class HttpClientService {
   constructor(private http:HttpClient) { }
 
-  getTodos(): Observable<any> { return this.http.post('http://localhost:8080/listTodos', null); }
+  
+  private baseUrl = 'http://localhost:8080/api/v1';
 
-  createTodo(title:string): Observable<Object> { return this.http.post<Todo>('http://localhost:8080/createTodo', title);}
-  findTodo(id:number): Observable<Object> { return this.http.post<Todo>('http://localhost:8080/findTodo', id);}
-  updateTodo(id:number, title:string): Observable<Object> { return this.http.post<Todo>('http://localhost:8080/findTodo', {id, title});}
-  deleteTodo(id: number): Observable<Object> { return this.http.post<Todo>('http://localhost:8080/deleteTodo', id);}
-  markTodoCompleted(id: number): Observable<Object> { return this.http.post<Todo>('http://localhost:8080/markTodoCompleted', id);}
-  markTodoUncompleted(id: number): Observable<Object> { return this.http.post<Todo>('http://localhost:8080/markTodoUncompleted', id);}
+  getTodos(): Observable<any> { return this.http.get(`${this.baseUrl}/listTodos`); }
+  findTodo(id:number): Observable<Object> { return this.http.get<Todo>(`${this.baseUrl}/findTodo/${id}`);}
+  createTodo(title:string): Observable<Object> { return this.http.post<Todo>(`${this.baseUrl}/createTodo`,title);}
+  updateTodo(id:number, title:string): Observable<Object> { return this.http.put<Todo>(`${this.baseUrl}/findTodo/${id}`, title);}
+  deleteTodo(id: number): Observable<Object> { return this.http.delete<Todo>(`${this.baseUrl}/deleteTodo/${id}`);}
+  markTodoCompleted(id: number): Observable<Object> { return this.http.put<Todo>(`${this.baseUrl}/markTodoCompleted/${id}`, null);}
+  markTodoUncompleted(id: number): Observable<Object> { return this.http.put<Todo>(`${this.baseUrl}/markTodoUncompleted/${id}`, null);}
 }

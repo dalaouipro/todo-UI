@@ -15,16 +15,16 @@ export class TodoUpdateComponent {
     // this.id = this.router.getCurrentNavigation()?.extras.state?.['id'];
   }
   ngOnInit(){
-    // this.route.queryParams.subscribe({
-    //   next : params => {
-    //     console.log(params);
-    //     this.id=params['id'];
-    //     this.title=params['title'];
-    //   }
-    // })
-    this.id=history.state['id']
-    console.log(this.id);
-    console.log(this.title);
+    this.route.queryParams.subscribe({
+      next : params => {
+        console.log(params);
+        this.id=params['id'];
+        this.title=params['title'];
+      }
+    })
+    // this.id=history.state['id']
+    // console.log(this.id);
+    // console.log(this.title);
   }
   
 

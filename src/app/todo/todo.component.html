@@ -25,7 +25,7 @@
 				<td>{{todo.title}}</td>
 				<td>{{todo.complete ? 'Yes' : 'No' }}</td>
 				<td><button (click)="switchComplete(todo)" class="btn btn-success">(Un)Complete</button></td>
-				<td><button (click)="findTodo(todo.id)" class="btn btn-success">find</button></td>
+				<td><button (click)="findTodo(todo.id, todo.title)" class="btn btn-success">update</button></td>
 				<td><button (click)="deleteTodo(todo.id)" class="btn btn-danger">Delete</button></td>
 			  </tr>
 			</tbody>
